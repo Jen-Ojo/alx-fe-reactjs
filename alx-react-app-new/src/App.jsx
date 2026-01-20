@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <UserProfile name="John Doe" age={25} bio="I love traveling and coding." />
+      <UserProfile name="Jane Doe" age={28} bio="Frontend developer." />
       <MainContent />
       <Footer />
     </>
@@ -15,4 +15,5 @@ function App() {
 }
 
 export default App;
+
 
