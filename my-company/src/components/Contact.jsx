@@ -1,50 +1,34 @@
-import { useState } from "react";
+import React from "react";
 
 function Contact() {
-  const [message, setMessage] = useState("");
-
-  const containerStyle = {
-    padding: "20px",
-    backgroundColor: "#f4f4f4",
-    textAlign: "center"
-  };
-
-  const inputStyle = {
-    padding: "10px",
-    width: "80%",
-    marginBottom: "10px"
-  };
-
-  const buttonStyle = {
-    padding: "10px 20px",
-    backgroundColor: "blue",
-    color: "white",
-    border: "none",
-    cursor: "pointer"
-  };
-
   return (
-    <div style={containerStyle}>
-      <h2>Contact Us</h2>
+    <div style={{ padding: "20px" }}>
+      <h2>Contact</h2>
 
-      <input
-        type="text"
-        placeholder="Enter your message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        style={inputStyle}
-      />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Your message"
+          style={{ padding: "10px", marginBottom: "10px" }}
+        />
 
-      <br />
+        <br />
 
-      <button style={buttonStyle}>
-        Send
-      </button>
-
-      <p>{message}</p>
+        <button
+          type="submit"
+          style={{ padding: "10px", backgroundColor: "green", color: "white" }}
+        >
+          Send
+        </button>
+      </form>
     </div>
   );
 }
 
 export default Contact;
+
 
