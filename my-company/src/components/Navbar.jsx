@@ -4,16 +4,28 @@ function Navbar() {
   return (
     <nav
       style={{
+        display: "flex",
+        justifyContent: "space-between",
         padding: "15px",
         backgroundColor: "#222",
-        display: "flex",
-        gap: "15px"
       }}
     >
-      <Link style={{ color: "#fff" }} to="/">Home</Link>
-      <Link style={{ color: "#fff" }} to="/about">About</Link>
-      <Link style={{ color: "#fff" }} to="/services">Services</Link>
-      <Link style={{ color: "#fff" }} to="/contact">Contact</Link>
+      <h3 style={{ color: "white" }}>My Company</h3>
+
+      <div style={{ display: "flex", gap: "15px" }}>
+        <Link style={{ color: "white", textDecoration: "none" }} to="/">
+          Home
+        </Link>
+        <Link style={{ color: "white", textDecoration: "none" }} to="/about">
+          About
+        </Link>
+        <Link style={{ color: "white", textDecoration: "none" }} to="/services">
+          Services
+        </Link>
+        <Link style={{ color: "white", textDecoration: "none" }} to="/contact">
+          Contact
+        </Link>
+      </div>
     </nav>
   );
 }
