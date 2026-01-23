@@ -1,20 +1,15 @@
-import { useRecipeStore } from '../store/recipeStore';
+import { useContext } from 'react';
+import { RecipeContext } from './recipeStore';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes);
+  const { recipes } = useContext(RecipeContext);
 
   return (
-    <div>
-      <h2>Recipes</h2>
-      {recipes.length === 0 && <p>No recipes yet.</p>}
-
-      {recipes.map((recipe) => (
-        <div key={recipe.id}>
-          <h3>{recipe.title}</h3>
-          <p>{recipe.description}</p>
-        </div>
+    <ul>
+      {recipes.map((recipe, index) => (
+        <li key={index}>{recipe.name}</li>
       ))}
-    </div>
+    </ul>
   );
 };
 
