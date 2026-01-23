@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Contact() {
+  const [message, setMessage] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    alert("Form submitted!");
   };
 
   return (
@@ -13,16 +16,16 @@ function Contact() {
         <input
           type="text"
           placeholder="Your message"
-          style={{ padding: "10px", marginBottom: "10px" }}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          style={{ padding: "10px", marginBottom: "10px", width: "100%" }}
         />
+
+        <br />
 
         <button
           type="submit"
-          style={{
-            padding: "10px",
-            backgroundColor: "green",
-            color: "white",
-          }}
+          style={{ padding: "10px", backgroundColor: "green", color: "white" }}
         >
           Send
         </button>
@@ -32,6 +35,4 @@ function Contact() {
 }
 
 export default Contact;
-
-
 
