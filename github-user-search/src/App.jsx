@@ -1,3 +1,4 @@
+  GNU nano 8.6                      src/App.jsx
 function App() {
   return (
     <div>
@@ -8,4 +9,5 @@ function App() {
 }
 
 export default App;
+
 
