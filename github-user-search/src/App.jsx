@@ -2,7 +2,7 @@
 import React from "react";
 
 function App() {
-  return <div>GitHub User Search</div>;
+  return <div>GitHub User Search App</div>;
 }
 
 export default App;
