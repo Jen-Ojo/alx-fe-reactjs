@@ -11,6 +11,7 @@ function UserProfile() {
       shadow-lg
     ">
         <div className="sm:p-4">
+            "sm:w-24", "sm:h-24", "sm:mx-0"
       <img
         src="https://via.placeholder.com/150"
         alt="User"
