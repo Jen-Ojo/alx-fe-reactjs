@@ -2,6 +2,7 @@ function UserProfile() {
   return (
     <div className="
       user-profile
+      
       bg-gray-100
       p-4 md:p-8
       max-w-xs md:max-w-sm
@@ -9,6 +10,7 @@ function UserProfile() {
       rounded-lg
       shadow-lg
     ">
+        <div className="sm:p-4">
       <img
         src="https://via.placeholder.com/150"
         alt="User"
