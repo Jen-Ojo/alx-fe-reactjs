@@ -1,13 +1,23 @@
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
+import RecipeDetail from "./components/RecipeDetail";
 
 function App() {
   return (
-    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+
+
+
 
 
