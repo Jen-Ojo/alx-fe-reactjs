@@ -1,9 +1,9 @@
-import React from 'react';
-import PostsComponent from './components/PostsComponent.jsx';
+import React from "react";
+import PostsComponent from "./components/PostsComponent";
 
 function App() {
   return (
-    <div className="p-6">
+    <div>
       <PostsComponent />
     </div>
   );
