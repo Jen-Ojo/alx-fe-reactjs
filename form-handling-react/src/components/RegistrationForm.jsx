@@ -1,67 +1,49 @@
 import { useState } from "react";
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       setError("All fields are required");
       return;
     }
 
     setError("");
-    console.log(formData);
+    console.log({ username, email, password });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-6 space-y-4">
-      {error && <p className="text-red-500">{error}</p>}
+    <form onSubmit={handleSubmit}>
+      {error && <p>{error}</p>}
 
       <input
         type="text"
-        name="username"
         placeholder="Username"
-        value={formData.username}
-        onChange={handleChange}
-        className="border p-2 w-full"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
 
       <input
         type="email"
-        name="email"
         placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        className="border p-2 w-full"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
         type="password"
-        name="password"
         placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-        className="border p-2 w-full"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button type="submit" className="bg-blue-500 text-white p-2">
-        Register
-      </button>
+      <button type="submit">Register</button>
     </form>
   );
 };
