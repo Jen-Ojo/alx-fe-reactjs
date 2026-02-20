@@ -3,28 +3,28 @@ import { useState } from "react";
 function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Write Tests", completed: false },
+    { id: 2, text: "Write Tests", completed: false }
   ]);
 
-  const [newTodo, setNewTodo] = useState("");
+  const [input, setInput] = useState("");
 
   const addTodo = (e) => {
     e.preventDefault();
-    if (!newTodo.trim()) return;
+    if (!input) return;
 
-    const todo = {
+    const newTodo = {
       id: Date.now(),
-      text: newTodo,
-      completed: false,
+      text: input,
+      completed: false
     };
 
-    setTodos([...todos, todo]);
-    setNewTodo("");
+    setTodos([...todos, newTodo]);
+    setInput("");
   };
 
   const toggleTodo = (id) => {
     setTodos(
-      todos.map((todo) =>
+      todos.map(todo =>
         todo.id === id
           ? { ...todo, completed: !todo.completed }
           : todo
@@ -33,32 +33,29 @@ function TodoList() {
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos(todos.filter(todo => todo.id !== id));
   };
 
   return (
     <div>
-      <h2>Todo List</h2>
+      <h1>Todo List</h1>
 
       <form onSubmit={addTodo}>
         <input
-          placeholder="Add new todo"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add a todo"
         />
         <button type="submit">Add</button>
       </form>
 
       <ul>
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <li key={todo.id}>
             <span
               onClick={() => toggleTodo(todo.id)}
               style={{
-                textDecoration: todo.completed
-                  ? "line-through"
-                  : "none",
-                cursor: "pointer"
+                textDecoration: todo.completed ? "line-through" : "none"
               }}
             >
               {todo.text}
@@ -74,3 +71,4 @@ function TodoList() {
 }
 
 export default TodoList;
+

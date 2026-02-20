@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TodoList from "../components/TodoList";
+import TodoList from "./TodoList";
 
 describe("TodoList Component", () => {
 
@@ -12,13 +12,13 @@ describe("TodoList Component", () => {
 
   test("adds a new todo", () => {
     render(<TodoList />);
-    const input = screen.getByPlaceholderText("Add new todo");
+    const input = screen.getByPlaceholderText("Add a todo");
     const button = screen.getByText("Add");
 
-    fireEvent.change(input, { target: { value: "New Todo" } });
+    fireEvent.change(input, { target: { value: "New Task" } });
     fireEvent.click(button);
 
-    expect(screen.getByText("New Todo")).toBeInTheDocument();
+    expect(screen.getByText("New Task")).toBeInTheDocument();
   });
 
   test("toggles a todo", () => {
@@ -40,3 +40,4 @@ describe("TodoList Component", () => {
   });
 
 });
+
