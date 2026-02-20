@@ -4,10 +4,11 @@ function ProtectedRoute({ children }) {
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return children;
 }
 
 export default ProtectedRoute;
+

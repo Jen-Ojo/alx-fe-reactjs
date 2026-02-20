@@ -1,9 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Login from "./pages/Login";
-import BlogPost from "./pages/BlogPost";
+import Profile from "./components/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
+import BlogPost from "./components/BlogPost";
 
 function App() {
   return (
@@ -11,15 +9,12 @@ function App() {
       <nav>
         <Link to="/">Home</Link> |{" "}
         <Link to="/profile">Profile</Link> |{" "}
-        <Link to="/blog/1">Blog Post 1</Link> |{" "}
-        <Link to="/login">Login</Link>
+        <Link to="/blog/1">Blog 1</Link>
       </nav>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<h2>Home Page</h2>} />
 
-        {/* Protected Route */}
         <Route
           path="/profile/*"
           element={
@@ -29,7 +24,6 @@ function App() {
           }
         />
 
-        {/* Dynamic Route */}
         <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
     </Router>
@@ -37,3 +31,4 @@ function App() {
 }
 
 export default App;
+
