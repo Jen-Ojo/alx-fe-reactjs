@@ -1,26 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Write Tests", completed: false },
+    { id: 2, text: "Write Tests", completed: false }
   ]);
 
   const [newTodo, setNewTodo] = useState("");
 
-  const addTodo = (e) => {
+  const handleAddTodo = (e) => {
     e.preventDefault();
     if (!newTodo.trim()) return;
 
-    setTodos([
-      ...todos,
-      { id: Date.now(), text: newTodo, completed: false },
-    ]);
+    const todo = {
+      id: Date.now(),
+      text: newTodo,
+      completed: false
+    };
 
+    setTodos([...todos, todo]);
     setNewTodo("");
   };
 
-  const toggleTodo = (id) => {
+  const handleToggleTodo = (id) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id
@@ -30,7 +32,7 @@ function TodoList() {
     );
   };
 
-  const deleteTodo = (id) => {
+  const handleDeleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
@@ -38,12 +40,12 @@ function TodoList() {
     <div>
       <h1>Todo List</h1>
 
-      <form onSubmit={addTodo}>
+      <form onSubmit={handleAddTodo}>
         <input
           type="text"
+          placeholder="Add a todo"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add todo"
         />
         <button type="submit">Add</button>
       </form>
@@ -52,18 +54,17 @@ function TodoList() {
         {todos.map((todo) => (
           <li key={todo.id}>
             <span
-              onClick={() => toggleTodo(todo.id)}
+              onClick={() => handleToggleTodo(todo.id)}
               style={{
                 textDecoration: todo.completed
                   ? "line-through"
-                  : "none",
-                cursor: "pointer",
+                  : "none"
               }}
             >
               {todo.text}
             </span>
 
-            <button onClick={() => deleteTodo(todo.id)}>
+            <button onClick={() => handleDeleteTodo(todo.id)}>
               Delete
             </button>
           </li>
@@ -74,3 +75,5 @@ function TodoList() {
 }
 
 export default TodoList;
+
+
