@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function TodoList() {
   const [todos, setTodos] = useState([
@@ -6,25 +6,25 @@ function TodoList() {
     { id: 2, text: "Write Tests", completed: false }
   ]);
 
-  const [input, setInput] = useState("");
+  const [newTodo, setNewTodo] = useState("");
 
-  const addTodo = (e) => {
+  const handleAddTodo = (e) => {
     e.preventDefault();
-    if (!input) return;
+    if (!newTodo.trim()) return;
 
-    const newTodo = {
+    const todo = {
       id: Date.now(),
-      text: input,
+      text: newTodo,
       completed: false
     };
 
-    setTodos([...todos, newTodo]);
-    setInput("");
+    setTodos([...todos, todo]);
+    setNewTodo("");
   };
 
-  const toggleTodo = (id) => {
+  const handleToggleTodo = (id) => {
     setTodos(
-      todos.map(todo =>
+      todos.map((todo) =>
         todo.id === id
           ? { ...todo, completed: !todo.completed }
           : todo
@@ -32,35 +32,39 @@ function TodoList() {
     );
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+  const handleDeleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
     <div>
       <h1>Todo List</h1>
 
-      <form onSubmit={addTodo}>
+      <form onSubmit={handleAddTodo}>
         <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          type="text"
           placeholder="Add a todo"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
         />
         <button type="submit">Add</button>
       </form>
 
       <ul>
-        {todos.map(todo => (
+        {todos.map((todo) => (
           <li key={todo.id}>
             <span
-              onClick={() => toggleTodo(todo.id)}
+              onClick={() => handleToggleTodo(todo.id)}
               style={{
-                textDecoration: todo.completed ? "line-through" : "none"
+                textDecoration: todo.completed
+                  ? "line-through"
+                  : "none"
               }}
             >
               {todo.text}
             </span>
-            <button onClick={() => deleteTodo(todo.id)}>
+
+            <button onClick={() => handleDeleteTodo(todo.id)}>
               Delete
             </button>
           </li>
@@ -71,4 +75,5 @@ function TodoList() {
 }
 
 export default TodoList;
+
 
